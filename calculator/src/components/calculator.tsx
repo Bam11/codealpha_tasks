@@ -1,10 +1,17 @@
+import { useState } from 'react'
 import Button from './button'
 
 export default function Calculator() {
+  const [currentValue, setCurrentValue] = useState("0");
+
+  function handleDecimalClick(i){
+    setCurrentValue((prev) => prev + i);
+  }
+
   return (
     <div className="bg-white p-5 rounded-2xl">
       <div className="bg-gray-100 p-4 text-right text-6xl rounded-xl mb-6 shadow-sm">
-        0
+        {currentValue}
       </div>
       <div className="grid grid-cols-4 gap-5">
         <Button className="bg-red-100 text-red-400">
@@ -19,7 +26,10 @@ export default function Calculator() {
         <Button className="bg-orange-400 text-white">
           &#247;
         </Button>
-        <Button className="">
+        <Button 
+          onClick={() => handleDecimalClick("1")}
+          className=""
+        >
           1
         </Button>
         <Button className="">

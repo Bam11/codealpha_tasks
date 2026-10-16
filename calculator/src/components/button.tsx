@@ -5,11 +5,12 @@ interface ButtonProps {
   className: string,
 }
 
-export default function Button({children, className}: ButtonProps) {
+export default function Button({children, className, ...rest}: ButtonProps) {
   return (
     <button
       type="button"
       className={`bg-gray-100 py-3 px-5 rounded-3xl shadow-sm text-gray-600 hover:brightness-95 hover:cursor-pointer active:brightness-90 transition-all duration-300 text-3xl ${className}`}
+      {...rest}
     >
       {children}
     </button>
