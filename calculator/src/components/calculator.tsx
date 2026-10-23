@@ -30,6 +30,26 @@ export default function Calculator() {
     setCurrentValue("");
   }
 
+  function handleCalculate(){
+    if(operator === "/"){
+      setCurrentValue(parseFloat(previousValue) / parseFloat(currentValue));
+      setPreviousValue(""); 
+      setOperator("");
+    } else if(operator === "*"){
+      setCurrentValue(parseFloat(previousValue) * parseFloat(currentValue));
+      setPreviousValue(""); 
+      setOperator(""); 
+    } else if(operator === "-"){
+      setCurrentValue(parseFloat(previousValue) - parseFloat(currentValue));
+      setPreviousValue(""); 
+      setOperator(""); 
+    } else if(operator === "+"){
+      setCurrentValue(parseFloat(previousValue) + parseFloat(currentValue));
+      setPreviousValue(""); 
+      setOperator("");
+    }
+  }
+
   return (
     <div className="bg-white p-5 rounded-2xl">
       <div className="bg-gray-100 p-4 text-right text-6xl rounded-xl mb-6 shadow-sm">
@@ -45,7 +65,7 @@ export default function Calculator() {
         <Button className="bg-gray-200 text-gray-800" onClick={handleSquareRoot}>
           &#8730;
         </Button>
-        <Button className="bg-orange-400 text-white">
+        <Button className="bg-orange-400 text-white" onClick={() => handleOperator("/")}>
           &#247;
         </Button>
         <Button 
@@ -66,7 +86,7 @@ export default function Calculator() {
         >
           3
         </Button>
-        <Button className="bg-orange-400 text-white">
+        <Button className="bg-orange-400 text-white" onClick={() => handleOperator("*")}>
           &#215;
         </Button>
         <Button
@@ -86,7 +106,7 @@ export default function Calculator() {
         >
           6
         </Button>
-        <Button className="bg-orange-400 text-white">
+        <Button className="bg-orange-400 text-white" onClick={() => handleOperator("-")}>
           &#x2212;
         </Button>
         <Button 
@@ -107,7 +127,7 @@ export default function Calculator() {
         >
           9
         </Button>
-        <Button className="bg-orange-400 text-white">
+        <Button className="bg-orange-400 text-white" onClick={() => handleOperator("+")}>
           &#x2b;
         </Button>
         <Button 
@@ -121,7 +141,7 @@ export default function Calculator() {
           className="">
           &#183;
         </Button>
-        <Button className="bg-green-400 text-white">
+        <Button className="bg-green-400 text-white" onClick={handleCalculate}>
           &#x3d;
         </Button>
       </div>
