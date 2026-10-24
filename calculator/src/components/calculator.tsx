@@ -2,22 +2,10 @@ import { useState } from 'react'
 import Button from './button'
 
 export default function Calculator() {
-  const [currentValue, setCurrentValue] = useState("");
+  const [currentValue, setCurrentValue] = useState("0");
 
   function handleDecimalClick(i){
     setCurrentValue((prev) => prev + i);
-  }
-  
-  function handleClear(){
-    setCurrentValue("");
-  }
-
-  function handlePercent(){
-    setCurrentValue((prev) => prev / 100);
-  }
-
-  function handlesqrt(){
-    setCurrentValue((prev) => Math.sqrt(prev));
   }
 
   return (
@@ -26,20 +14,16 @@ export default function Calculator() {
         {currentValue}
       </div>
       <div className="grid grid-cols-4 gap-5">
-        <Button
-          onClick={handleClear}
-          className="bg-red-100 text-red-400">
+        <Button className="bg-red-100 text-red-400">
           C
         </Button>
-        <Button
-          
-          className="">
+        <Button className="">
           %
         </Button>
-        <Button className="">
+        <Button className="bg-gray-200 text-gray-800" onClick={handleSquareRoot}>
           &#8730;
         </Button>
-        <Button className="bg-orange-400 text-white">
+        <Button className="bg-orange-400 text-white" onClick={() => handleOperator("/")}>
           &#247;
         </Button>
         <Button 
@@ -48,78 +32,46 @@ export default function Calculator() {
         >
           1
         </Button>
-        <Button
-          onClick={() => handleDecimalClick("2")}
-          className=""
-        >
+        <Button className="">
           2
         </Button>
-        <Button
-          onClick={() => handleDecimalClick("3")}
-          className=""
-        >
+        <Button className="">
           3
         </Button>
-        <Button
-          
-          className="bg-orange-400 text-white"
-        >
+        <Button className="bg-orange-400 text-white">
           &#215;
         </Button>
-        <Button
-          onClick={() => handleDecimalClick("4")}
-          className=""
-        >
+        <Button className="">
           4
         </Button>
-        <Button
-          onClick={() => handleDecimalClick("5")}
-          className=""
-        >
+        <Button className="">
           5
         </Button>
-        <Button
-          onClick={() => handleDecimalClick("6")}
-          className=""
-        >
+        <Button className="">
           6
         </Button>
-        <Button className="bg-orange-400 text-white">
+        <Button className="bg-orange-400 text-white" onClick={() => handleOperator("-")}>
           &#x2212;
         </Button>
-        <Button
-          onClick={() => handleDecimalClick("7")}
-          className=""
-        >
+        <Button className="">
           7
         </Button>
-        <Button
-          onClick={() => handleDecimalClick("8")}
-          className=""
-        >
+        <Button className="">
           8
         </Button>
-        <Button
-          onClick={() => handleDecimalClick("9")}
-          className=""
-        >
+        <Button className="">
           9
         </Button>
-        <Button className="bg-orange-400 text-white">
+        <Button className="bg-orange-400 text-white" onClick={() => handleOperator("+")}>
           &#x2b;
         </Button>
-        <Button
-          onClick={() => handleDecimalClick("0")}
-          className="col-span-2"
-        >
+        <Button className="col-span-2">
           0
         </Button>
-        <Button
-          onClick={() => handleDecimalClick(".")}
-          className="">
+        <Button className="">
           &#183;
         </Button>
-        <Button className="bg-green-400 text-white">
+        <Button className="bg-green-400 text-white" onClick={handleCalculate}>
           &#x3d;
         </Button>
       </div>
